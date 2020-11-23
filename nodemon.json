@@ -1,6 +1,7 @@
 {
     "watch": [
-        "src"
+        "src",
+        "infrastructure"
     ],
     "ext": "ts",
     "ignore": [
