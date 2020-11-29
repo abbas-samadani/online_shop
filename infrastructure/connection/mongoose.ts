@@ -7,11 +7,11 @@ mongoose.connect(`mongodb://${process.env.MONGO_HOST}/${process.env.MONGO_DB}`, 
     useCreateIndex: true
 })
 
-mongoose.connection.on('open' , ()=>{
+mongoose.connection.on('open', () => {
     console.log('mongo connection is open ...');
-    
+
 })
 
-mongoose.connection.on('error' , (err)=>{
-    console.log(`failed to connect`  , err.message);    
+mongoose.connection.on('error', (err) => {
+    console.log(`failed to connect`, err.message);
 })
