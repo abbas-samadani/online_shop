@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import AttributeItems from './AttributeItems'
 import Attribute from './Attribute'
-import {
-  Box,
-  Typography,
-  Divider,
-  FormControl,
-  Button
-} from '@material-ui/core'
+import { Box, Typography, Divider, FormControl, Button } from '@material-ui/core'
+import { v4 as uuid } from "uuid";
+
 //import Icon from '@material-ui/core/Icon';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { AddBox } from '@material-ui/icons';
@@ -34,18 +30,19 @@ const AttributeGroup: React.FC<AttributeGroupProps> = ({ title }: AttributeGroup
 
   const handleButton = (e: React.MouseEvent) => {
     e.preventDefault();
-    setAttribute((prev) =>{
+    setAttribute((prev) => {
       return [
         ...Attributes,
         {
+          hash: uuid(),
           title: '',
-          slug : '',
-          type : 1,
-          filterable : true,
-          hasPrice : false
+          slug: '',
+          type: 1,
+          filterable: true,
+          hasPrice: false
         }
-      ]      
-  
+      ]
+
     })
   }
   return (
@@ -54,8 +51,8 @@ const AttributeGroup: React.FC<AttributeGroupProps> = ({ title }: AttributeGroup
         {title}
       </Typography>
       <Divider />
-      {Attributes.map((attribute : AttributeItems , index) => (
-        <Attribute key={index}/>
+      {Attributes.map((attribute: AttributeItems) => (
+        <Attribute key={attribute.hash} {...attribute} />
       ))}
       <FormControl className={styles.marginTop}>
         <Button
